@@ -17,11 +17,13 @@ return new class extends Migration
             $table->string("year");
             $table->string("author");
             $table->timestamps();
+            
+            // ✅ Make category_id optional (nullable)
             $table->foreignId('category_id')
+                ->nullable() // <--- this line is important
                 ->constrained('categories')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
         });
     }
 
