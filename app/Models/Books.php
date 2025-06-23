@@ -17,4 +17,6 @@ class Books extends Model
     function returnBook(){
         return $this->hasMany(ReturnBook::class);
     }
+    protected $fillable = ['title', 'year', 'author', 'category_id'];
+
 }
