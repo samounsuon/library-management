@@ -1,10 +1,17 @@
 <?php
 
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MembersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
+use App\Models\Books;
+use App\Models\Categories;
+use App\Models\Members;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,12 +28,26 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get("/registers",[RegisterController::class,"index"]);
 // Route::post("/registers",[RegisterController::class,"store"]);
-Route::prefix('register')->group(function(){
+Route::prefix('v1')->group(function(){
     Route::apiResource('registers', RegisterController::class);
+    Route::apiResource("member",MembersController::class);  
+    Route::apiResource("books",BooksController::class);
+    Route::apiResource("category",CategoriesController::class);
 });
-Route::prefix('book')->group(function(){
-    Route::apiResource('books', BooksController::class);
-});
-Route::prefix('category')->group(function(){
-    Route::apiResource('categories', CategoriesController::class);
-});
+
+
+
+
+
+
+
+Route::put("/member/{id}",[MembersController::class,"update"]);
+Route::delete("/member/{id}",[MembersController::class,"destroy"]);
+Route::post("/login",[LoginController::class,"UserLogin"]);
+
+Route::post("/borrow",[BorrowController::class,"borrowBook"]);
+
+
+
+// Route::post("/books",[BooksController::class,"store"]);
+// Route::put("/books/{id}",[BooksController::class,"update"]);
