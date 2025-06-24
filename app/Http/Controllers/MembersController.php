@@ -15,7 +15,7 @@ class MembersController extends Controller
             return response()->json(['members' => $member], 200);
     }
     function store(Request $request){
-         $register= new Members();
+        $register= new Members();
         $register->name = $request->name;
         $register->email = $request->email;
         $register->phone = $request->phone;

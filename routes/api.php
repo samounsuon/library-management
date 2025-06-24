@@ -44,7 +44,7 @@ Route::prefix('v1')->group(function(){
 
 
 Route::put("/member/{id}",[MembersController::class,"update"]);
-Route::delete("/member/{id}",[MembersController::class,"destroy"]);
+// Route::delete("/member/{id}",[MembersController::class,"destroy"]);
 Route::post("/login",[LoginController::class,"UserLogin"]);
 
 

@@ -20,4 +20,11 @@ class Members extends Model
     function getcreatedAttribute($value){
         return date(('d/m/y'), strtotime($value));
     }
+     protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'gender',
+      
+    ];
 }
