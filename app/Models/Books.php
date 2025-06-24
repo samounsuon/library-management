@@ -10,7 +10,7 @@ class Books extends Model
     use HasFactory;
 
     // ✅ Allow mass assignment for these fields
-    protected $fillable = ['title', 'year', 'author', 'category_id'];
+    // protected $fillable = ['title', 'year', 'author', 'category_id'];
 
     // 📚 A book belongs to one category
     public function category()

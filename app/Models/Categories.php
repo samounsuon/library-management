@@ -11,4 +11,6 @@ class Categories extends Model
     function books(){
         return $this->hasMany(Books::class);
     }
+    protected $fillable = ['type'];
+
 }
