@@ -37,6 +37,7 @@ Route::prefix('v1')->group(function(){
 
 
 
+Route::post("/borrow",[BorrowController::class,"borrowBook"]);
 
 
 
@@ -45,7 +46,6 @@ Route::put("/member/{id}",[MembersController::class,"update"]);
 Route::delete("/member/{id}",[MembersController::class,"destroy"]);
 Route::post("/login",[LoginController::class,"UserLogin"]);
 
-Route::post("/borrow",[BorrowController::class,"borrowBook"]);
 
 
 

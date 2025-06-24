@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Borrow;
+use App\Models\Members;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class BorrowController extends Controller
 {
+    function index(){
+        $borrowbook= DB::table('member')->all();
+        return response()->json($borrowbook);
+    }
     function borrowBook(Request $request)
     {
         // Validate input
@@ -25,7 +30,8 @@ class BorrowController extends Controller
         // Optionally, return a response
         return response()->json(['message' => 'Book borrowed successfully.']);
     }
-    // function index(){
-
-    // }
+    function destroy($id){
+        $borrowbook= Members::find($id);
+        $borrowbook->delete();
+    }
 }
