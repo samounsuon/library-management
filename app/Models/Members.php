@@ -17,4 +17,7 @@ class Members extends Model
     function borrow(){
         return $this->hasMany(Borrow::class);
     }
+    function getcreatedAttribute($value){
+        return date(('d/m/y'), strtotime($value));
+    }
 }

@@ -9,26 +9,30 @@ use Illuminate\Support\Facades\DB;
 
 class BooksController extends Controller
 {
-        public function index(){
-            $books = Books::all(); 
-            return response()->json($books);
-        }
+    public function index()
+    {
+        $books = Books::all();
+        return response()->json($books);
+    }
 
-        public function store(Request $request){    
-            $book = new Books();
-            $book->title = $request->title;
-            $book->year = $request->year;
-            $book->author = $request->author;
-            $book->category_id = $request->category_id;
-            $book->save();
-            return response()->json([
-                "message" => "Book and category saved successfully.",
-                "book" => $book,
-            
-            ], 201);
-        }
-    
-    function update(Request $request, $id){
+    public function store(Request $request)
+    {
+        $book = new Books();
+        $book->title = $request->title;
+        $book->year = $request->year;
+        $book->author = $request->author;
+        $book->image = $request->image;
+        $book->numofbooks = $request->numofbooks;
+        $book->category_id = $request->category_id;
+        $book->save();
+        return response()->json([
+            "message" => "Book and category saved successfully.",
+            "book" => $book,
+        ], 201);
+    }
+
+    function update(Request $request, $id)
+    {
         $book = Books::find($id);
         if (!$book) {
             return response()->json([
@@ -40,6 +44,8 @@ class BooksController extends Controller
             'title' => $request->title,
             'year' => $request->year,
             'author' => $request->author,
+            'image'=> $request->image,
+            'numofbooks' => $request->numofbooks,
             'category_id' => $request->category_id,
         ]);
         return response()->json([
@@ -60,11 +66,10 @@ class BooksController extends Controller
         return response()->json($book);
     }
 
-    
-    function destroy($id){
+
+    function destroy($id)
+    {
         $book = Books::find($id);
         $book->delete();
     }
-
-
 }
