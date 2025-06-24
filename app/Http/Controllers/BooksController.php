@@ -11,7 +11,6 @@ class BooksController extends Controller
 {
         public function index(){
             $books = Books::all(); 
-            // echo "hi";
             return response()->json($books);
         }
 
@@ -29,7 +28,6 @@ class BooksController extends Controller
             ], 201);
         }
     
-    // ...existing code...
     function update(Request $request, $id){
         $book = Books::find($id);
         if (!$book) {
@@ -48,6 +46,8 @@ class BooksController extends Controller
             'status' => 'success',
         ]);
     }
+
+
     public function show($id)
     {
         $book = Books::find($id);
@@ -59,6 +59,8 @@ class BooksController extends Controller
         }
         return response()->json($book);
     }
+
+    
     function destroy($id){
         $book = Books::find($id);
         $book->delete();

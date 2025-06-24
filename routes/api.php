@@ -33,11 +33,13 @@ Route::prefix('v1')->group(function(){
     Route::apiResource("member",MembersController::class);  
     Route::apiResource("books",BooksController::class);
     Route::apiResource("category",CategoriesController::class);
+    Route::apiResource("borrow", BorrowController::class);
 });
 
 
 
-
+// Route::get('/borrow',[BorrowController::class,'index']);
+// Route::post('/borrow',[BorrowController::class,'store']);
 
 
 
@@ -45,7 +47,6 @@ Route::put("/member/{id}",[MembersController::class,"update"]);
 Route::delete("/member/{id}",[MembersController::class,"destroy"]);
 Route::post("/login",[LoginController::class,"UserLogin"]);
 
-Route::post("/borrow",[BorrowController::class,"borrowBook"]);
 
 
 
