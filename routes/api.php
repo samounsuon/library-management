@@ -26,7 +26,7 @@ use App\Models\Members;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-// Route::get("/registers",[RegisterController::class,"index"]);
+Route::get("/registers",[RegisterController::class,"index"]);
 // Route::post("/registers",[RegisterController::class,"store"]);
 Route::prefix('v1')->group(function(){
     Route::apiResource('registers', RegisterController::class);
