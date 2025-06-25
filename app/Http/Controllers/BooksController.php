@@ -71,5 +71,6 @@ class BooksController extends Controller
     {
         $book = Books::find($id);
         $book->delete();
+        return response()->json(['message'=>"delete successfull"],200);
     }
 }

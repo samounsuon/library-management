@@ -14,16 +14,19 @@ class BorrowController extends Controller
     }
 
 
+
     function store(Request $request){
         $validated = $request->validate([
             'date' => 'required|date',
             'book_id' => 'required|exists:books,id',
             'member_id' => 'required|exists:members,id',
+            'status' => 'sometimes|string', // allow status if provided
         ]);
         $borrowbook = new Borrow();
         $borrowbook->borrow_date = $validated['date'];
         $borrowbook->book_id = $validated['book_id'];
         $borrowbook->member_id = $validated['member_id'];
+        $borrowbook->status = $validated['status'] ?? 'pending'; // set status or default
         $borrowbook->save();
         return response()->json(['message' => 'Book borrowed successfully.']);
     }

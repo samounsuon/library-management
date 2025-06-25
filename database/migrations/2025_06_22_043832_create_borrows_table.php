@@ -14,6 +14,7 @@ return new class extends Migration
     Schema::create('borrows', function (Blueprint $table) {
         $table->id();
          $table->date('borrow_date');
+         $table->string('status')->default('pending');
         $table->timestamps();
         $table->foreignId('book_id')
             ->constrained('books')
